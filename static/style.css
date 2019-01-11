@@ -1,4 +1,5 @@
 
+/* CSS variables are very handy */
 :root {
     --font-dark: rgb(33, 32, 62);
     --font-lighter: rgb(62, 61, 95);
@@ -37,14 +38,8 @@ main {
     width: 100%;
 }
 
-.header-inner-container {
-    margin-left: 4rem;
-    display: inline-block;
-    text-align: left;
-}
-
 .top-container {
-    width: 100%;
+    width: 90%;
 
     display: flex;
     justify-content: space-between;
@@ -58,7 +53,6 @@ main {
 }
 
 .top-container > article {
-    margin-right: 5rem;
     flex-basis: 20rem;
     max-width: 40rem;
     flex-grow: 1;
@@ -98,12 +92,14 @@ h3 {
 
 section {
     margin-top: 3rem;
+    width: 100%;
 }
 
 ul {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    padding-left: 0;
 }
 
 ul a.link {
@@ -191,10 +187,6 @@ a {
 }
 
 .navigation {
-    position: absolute;
-    top: 0;
-    right: 0;
-
     padding: 0.5rem;
 
     display: flex;
@@ -236,7 +228,7 @@ a {
         flex-direction: column;
     }
     .timeline-container {
-        margin: 0;
+        margin-top: 5rem;
     }
 }
 

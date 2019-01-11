@@ -5,29 +5,53 @@ import { Component } from 'react';
 
 import { Link } from "./index";
 
+/*
+ * 
+ * This file contains the "content", which are the components that contain text and the media that is to be consumed by the page visitor. 
+ * 
+*/
+
+/**
+ * The information page.
+ */
 class Information extends Component {
     render() {
         return (
+            // The page is split into a main container and an inner container,
+            // this is to create a centered container that isn't the full width if the screen and is also properly centered.
+            // 
+            // Page is split into sections to create spacing between different parts
             <main className="information">
 
-                <section>
-                    <h2>Den här sidan är gjord av Anton Ekström.</h2>
-                    <h3>Kontakta mig här:</h3>
-                    <Link href="mailto:anton.ekstrom@elev.kungsbacka.se">anton.ekstrom@elev.kungsbacka.se</Link>
-                </section>
+                <div className="information-inner-container">
+                    <section>
+                        <h2>Den här sidan är gjord av Anton Ekström.</h2>
+                        <h3>Kontakta mig här:</h3>
+                        <Link href="mailto:anton.ekstrom@elev.kungsbacka.se">anton.ekstrom@elev.kungsbacka.se</Link>
+                    </section>
+    
+                    <section>
+                        <h3>Github repo för den här sidan:</h3>
+                        <Link href="https://github.com/zimbosaurus/history-of-the-web">Github</Link>
+                    </section>
+    
+                    <section>
+                        <h2>Källor</h2>
+                        <ul>
+                            <Link href="https://www.internetmuseum.se/berattelsen-om-internets-historia/">Internet Museum - Berättelsen om internets historia</Link>
+                            <Link href="https://sv.wikipedia.org/wiki/ARPANET">Wikipedia - ARPANET</Link>
+                        </ul>
+                    </section>
+                </div>
 
-                <section>
-                    <h2>Källor</h2>
-                    <ul>
-                        <Link href="https://www.internetmuseum.se/berattelsen-om-internets-historia/">Internet Museum - Berättelsen om internets historia</Link>
-                        <Link href="https://sv.wikipedia.org/wiki/ARPANET">Wikipedia - ARPANET</Link>
-                    </ul>
-                </section>
             </main>
         );
     }
 }
 
+/**
+ * Text that is displayed when the user has not yet clicked on the timeline
+ */
 class ContentPlaceholder extends Component {
     render() {
         return (
@@ -38,6 +62,12 @@ class ContentPlaceholder extends Component {
         );
     }
 }
+
+/*
+ * 
+ * Below are the entries on the different time periods 
+ * 
+ */
 
 class Content60 extends Component {
     render() {
@@ -94,4 +124,5 @@ class Content2000 extends Component {
     }
 }
 
+// Export all the components
 export { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information }; 

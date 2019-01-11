@@ -1,9 +1,15 @@
 'use strict'
 
+// ReactDOM is used to render the react components
 import ReactDOM from 'react-dom';
+
+// Import React
 import React from 'react';
+
+// Extend component to create a react component
 import { Component } from 'react';
 
+// Import "content" components from the other file
 import { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information } from './content';
 
 /**
@@ -14,18 +20,25 @@ class Page extends Component {
     constructor(props) {
         super(props);
         
+        // The current page that is being displayed
+        // The component is stored in state so that the page will be automatically updated whenever the state changes
         this.state = {
             page: <Main/>
         };
     }
 
+    /**
+     * @param {Component} page the page component to show
+     */
     showPage(page) {
         this.setState({page: page});
     }
 
     render() {
-        
         return (
+            // The whole page is wrapped in a wrapper
+            // Navigation contains the buttons in the top
+            // Beneath, the state-page is being rendered
             <div className="wrapper">
 
                 <Navigation>
@@ -47,17 +60,25 @@ class Main extends Component {
     constructor(props) {
         super(props);
 
+        // The currently displayed information about a selected period
         this.state = {
             content: <ContentPlaceholder/>
         };
     }
 
+    /**
+     * @param {Component} content change the information text
+     */
     changeContent(content) {
+
+        // Use setState() so that the page will be immediately updated
         this.setState({content: content});
     }
 
     render() {
         return (
+
+            // Page is divided into a top container and the timeline container that is below
             <main>
 
                 <div className="top-container">
@@ -78,6 +99,9 @@ class Main extends Component {
     }
 }
 
+/**
+ * Content is the information that is being displayed in the top right part of the screen.
+ */
 class Content extends Component {
     render() {
         return (
@@ -88,6 +112,9 @@ class Content extends Component {
     }
 }
 
+/**
+ * This is the subtitle that is located under the page title, inside the header
+ */
 class Description extends Component {
     render() {
         return (
@@ -98,6 +125,9 @@ class Description extends Component {
     }
 }
 
+/**
+ * The title and subtitle.
+ */
 class Header extends Component {
     render() {
         return (
@@ -111,35 +141,51 @@ class Header extends Component {
     }
 }
 
+/**
+ * Tooltip is displayed when the container is being hovered upon.
+ */
 class Tooltip extends Component {
     
     constructor(props) {
         super(props);
 
+        // State toggles if the tooltip is being displayed
         this.state = {
             visible: 'hidden'
         };
     }
 
+    /**
+     * Toggle the visibility of the tooltip
+     */
     toggleVisibility() {
+
         const vis = this.state.visible;
         
+        //toggle between visible and hidden
         if (vis == 'hidden') this.setState({visible: 'visible'});
         else this.setState({visible: 'hidden'});
     }
 
+    /**
+     * Combine the visibility state with the supplied style object and return it
+     * @returns {Object} the style object
+     */
     getSpanStyle() {
 
         var style = {
             visibility: this.state.visible
         };
 
+        // Only combine them if the style exists
+        if (this.props.style != null)
         Object.assign(style, this.props.style);
 
         return style;
     }
     
     render() {
+        // Toggles state when the mouse enters or leaves the main container
         return (
             <div className="tooltip" onMouseEnter={() => this.toggleVisibility()} onMouseLeave={() => this.toggleVisibility()}>
                 {this.props.children}
@@ -151,15 +197,21 @@ class Tooltip extends Component {
     }
 }
 
+/**
+ * A part of the timeline.
+ */
 class Period extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
+        // Only add text element inside the period if there is any text
         let text = this.props.children != null ? <h3 className="timeline-period-text">{this.props.children}</h3> : undefined;
 
         return (
+            // Uses color from props
+            // Elevates onClick call to parents
             <div style={{backgroundColor: this.props.color}} className="timeline-period" onClick={() => this.props.onClick()}>
                 <Tooltip style={{backgroundColor: this.props.color}} text={this.props.tooltip}>{text}</Tooltip>
             </div>
@@ -167,10 +219,14 @@ class Period extends Component {
     }
 }
 
+/**
+ * The timeline.
+ */
 class TimeLine extends Component {
 
     render() {
         return (
+            // It's basically just two containers
             <div className="timeline-container">
                 <div className="timeline">
                     {this.props.children}
@@ -181,7 +237,7 @@ class TimeLine extends Component {
 }
 
 /**
- * Absolutely positioned menu that is positioned at the top of the screen.
+ * A bar/ribbon at the top of the page that contains buttons for major navigation.
  */
 class Navigation extends Component {
     render() {
@@ -193,6 +249,9 @@ class Navigation extends Component {
     }
 }
 
+/**
+ * A link.
+ */
 export class Link extends Component {
     getClass() {
         return this.props.className + " link";
@@ -204,12 +263,18 @@ export class Link extends Component {
     }
 }
 
+/**
+ * A button.
+ */
 export class Button extends Link {
     getClass() {
         return super.getClass() + " button";
     }
 }
 
+/**
+ * Not being used currently, footers are annoying
+ */
 class Footer extends Component {
     render() {
         return (
@@ -220,4 +285,5 @@ class Footer extends Component {
     }
 }
 
+// Render the entire page
 ReactDOM.render(<Page/>, document.getElementById("root"));

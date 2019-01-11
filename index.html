@@ -1,19 +1,26 @@
 <!doctype html>
 
-<!-- Den här webbsidan är gjord i 1920x1080 och jag har inte orkat att göra den särskilt adaptiv så den kommer nog se rätt ful ut i andra storlekar. -->
-
 <html>
     <head>
         <title>Webbens Historia</title>
 
-        <meta charset="utf-8">
+        <!-- Jag borde kanske ha dokumenterat på Svenska men jag orkade inte skriva om det när jag redan hade börjat på Engelska. -->
+        
+        <!-- To control the viewport, of mobile devices in particular -->
+        <!-- "initial-scale" controls the zoom level on mobile devices when the page is first loaded -->
+        <!-- the width is set to "device-width" which is the actual width of the screen instead of the virtual viewport that many mobile browsers use. -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
 
+        <!-- Fonts from Google and a stylesheet -->
         <link href="https://fonts.googleapis.com/css?family=Neuton|Montserrat" rel="stylesheet">
         <link href="static/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
+        <!-- React components will be rendered in root -->
         <div id="root"></div>
+
+        <!-- A bundle consisting of all the source files which have been compiled into a single file that can be read by the browser -->
         <script src="static/bundle.js"></script>
     </body>
 </html>

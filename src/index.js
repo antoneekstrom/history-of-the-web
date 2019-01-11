@@ -13,17 +13,29 @@ import { Component } from 'react';
 import { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information } from './content';
 
 /**
+ * Get the queries in the URL
+ * @returns {URLSearchParams} the search parameters
+ */
+export function getUrlParams() {
+    return new URLSearchParams(window.location.search);
+}
+
+/**
  * Page component contains the whole page that is being rendered.
  */
 class Page extends Component {
 
     constructor(props) {
         super(props);
-        
+
+        // Get the page parameter
+        const page = getUrlParams().get('page');
+
         // The current page that is being displayed
         // The component is stored in state so that the page will be automatically updated whenever the state changes
+        // Check if the url leads to the info page, so that one can link directly to the info page of this site
         this.state = {
-            page: <Main/>
+            page: page == 'info' ? <Information/> : <Main/>
         };
     }
 
@@ -43,7 +55,7 @@ class Page extends Component {
 
                 <Navigation>
                     <Button onClick={() => this.showPage(<Main/>)}>Hem</Button>
-                    <Button onClick={() => this.showPage(<Information/>)}>Information</Button>
+                    <Button onClick={() => {this.showPage(<Information/>)}}>Information</Button>
                 </Navigation>
 
                 {this.state.page}
@@ -253,12 +265,23 @@ class Navigation extends Component {
  * A link.
  */
 export class Link extends Component {
+
+    /**
+     * Construct the classes.
+     */
     getClass() {
-        return this.props.className + " link";
+
+        const className = this.props.className;
+
+        return className != undefined ? className : "" + " link";
+    }
+    onClick() {
+        var c = this.props.onClick;
+        if (c != undefined) c();
     }
     render() {
         return (
-            <a className={this.getClass()} onClick={() => this.props.onClick()} href={this.props.href} target="_blank">{this.props.children}</a>
+            <a className={this.getClass()} onClick={() => this.onClick()} href={this.props.href} target="_blank">{this.props.children}</a>
         );
     }
 }

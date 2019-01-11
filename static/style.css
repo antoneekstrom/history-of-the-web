@@ -2,7 +2,7 @@
 /* CSS variables are very handy */
 :root {
     --font-dark: rgb(33, 32, 62);
-    --font-lighter: rgb(62, 61, 95);
+    --font-lighter: rgb(74, 73, 110);
     --font-link: rgb(69, 66, 135);
 
     --background: rgb(231, 226, 226);
@@ -193,6 +193,10 @@ a {
     justify-content: space-evenly;
     align-items: center;
     flex-direction: row;
+}
+
+a.link:hover:not(.button) {
+    color: rgb(138, 137, 172);
 }
 
 .navigation a.link {

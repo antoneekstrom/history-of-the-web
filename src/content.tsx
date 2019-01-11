@@ -1,4 +1,3 @@
-'use strict'
 
 import React from 'react';
 import { Component } from 'react';
@@ -14,7 +13,7 @@ import { Link } from "./index";
 /**
  * The information page.
  */
-class Information extends Component {
+class Information extends Component<any, any> {
     render() {
         return (
             // The page is split into a main container and an inner container,
@@ -52,7 +51,7 @@ class Information extends Component {
 /**
  * Text that is displayed when the user has not yet clicked on the timeline
  */
-class ContentPlaceholder extends Component {
+class ContentPlaceholder extends Component<any, any> {
     render() {
         return (
             <div>
@@ -69,7 +68,7 @@ class ContentPlaceholder extends Component {
  * 
  */
 
-class Content60 extends Component {
+class Content60 extends Component<any, any> {
     render() {
         return (
             <div>
@@ -80,7 +79,7 @@ class Content60 extends Component {
     }
 }
 
-class Content70 extends Component {
+class Content70 extends Component<any, any> {
     render() {
         return (
             <div>
@@ -91,7 +90,7 @@ class Content70 extends Component {
     }
 }
 
-class Content80 extends Component {
+class Content80 extends Component<any, any> {
     render() {
         return (
             <div>
@@ -102,7 +101,7 @@ class Content80 extends Component {
     }
 }
 
-class Content90 extends Component {
+class Content90 extends Component<any, any> {
     render() {
         return (
             <div>
@@ -113,7 +112,7 @@ class Content90 extends Component {
     }
 }
 
-class Content2000 extends Component {
+class Content2000 extends Component<any, any> {
     render() {
         return (
             <div>

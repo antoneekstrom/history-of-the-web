@@ -1,4 +1,3 @@
-'use strict'
 
 // ReactDOM is used to render the react components
 import ReactDOM from 'react-dom';
@@ -12,6 +11,8 @@ import { Component } from 'react';
 // Import "content" components from the other file
 import { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information } from './content';
 
+import * as States from './states';
+
 /**
  * Get the queries in the URL
  * @returns {URLSearchParams} the search parameters
@@ -23,7 +24,7 @@ export function getUrlParams() {
 /**
  * Page component contains the whole page that is being rendered.
  */
-class Page extends Component {
+class Page extends Component<any, States.IPage> {
 
     constructor(props) {
         super(props);
@@ -55,7 +56,7 @@ class Page extends Component {
 
                 <Navigation>
                     <Button onClick={() => this.showPage(<Main/>)}>Hem</Button>
-                    <Button onClick={() => {this.showPage(<Information/>)}}>Information</Button>
+                    <Button onClick={() => this.showPage(<Information/>)}>Information</Button>
                 </Navigation>
 
                 {this.state.page}
@@ -67,7 +68,7 @@ class Page extends Component {
 /**
  * Contains the main content.
  */
-class Main extends Component {
+class Main extends Component<any, States.IContent> {
 
     constructor(props) {
         super(props);
@@ -156,7 +157,7 @@ class Header extends Component {
 /**
  * Tooltip is displayed when the container is being hovered upon.
  */
-class Tooltip extends Component {
+class Tooltip extends Component<any, States.IVisibility> {
     
     constructor(props) {
         super(props);
@@ -183,7 +184,7 @@ class Tooltip extends Component {
      * Combine the visibility state with the supplied style object and return it
      * @returns {Object} the style object
      */
-    getSpanStyle() {
+    getSpanStyle() : Object {
 
         var style = {
             visibility: this.state.visible
@@ -212,7 +213,7 @@ class Tooltip extends Component {
 /**
  * A part of the timeline.
  */
-class Period extends Component {
+class Period extends Component<any, any> {
     constructor(props) {
         super(props);
     }
@@ -264,7 +265,7 @@ class Navigation extends Component {
 /**
  * A link.
  */
-export class Link extends Component {
+export class Link extends Component<any, any> {
 
     /**
      * Construct the classes.

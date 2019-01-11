@@ -11,7 +11,20 @@ import { Component } from 'react';
 // Import "content" components from the other file
 import { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information } from './content';
 
-import * as States from './states';
+// Interfaces to be used by React components
+import * as Interfaces from './interfaces';
+
+/*
+ * I have now switched over to using Typescript which is more strongly typed than vanilla js and therefore provides better intellisense and such.
+ * This makes it easier to catch errors and generally write less buggy code.
+ * 
+ * Because of typescript I now have to provide types for react components so that the compiler knows what kind of objects are
+ * to be present in state and props.
+ * 
+ * class Element extends React.Component
+ * --becomes
+ * class Element extends React.Component<Props, State>
+*/
 
 /**
  * Get the queries in the URL
@@ -24,7 +37,7 @@ export function getUrlParams() {
 /**
  * Page component contains the whole page that is being rendered.
  */
-class Page extends Component<any, States.IPage> {
+class Page extends Component<any, Interfaces.IPage> {
 
     constructor(props) {
         super(props);
@@ -68,7 +81,7 @@ class Page extends Component<any, States.IPage> {
 /**
  * Contains the main content.
  */
-class Main extends Component<any, States.IContent> {
+class Main extends Component<any, Interfaces.IContent> {
 
     constructor(props) {
         super(props);
@@ -157,7 +170,7 @@ class Header extends Component {
 /**
  * Tooltip is displayed when the container is being hovered upon.
  */
-class Tooltip extends Component<any, States.IVisibility> {
+class Tooltip extends Component<any, Interfaces.IVisibility> {
     
     constructor(props) {
         super(props);

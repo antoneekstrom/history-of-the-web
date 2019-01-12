@@ -3,7 +3,7 @@
 import ReactDOM from 'react-dom';
 
 // Import React
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 // Extend component to create a react component
 import { Component } from 'react';
@@ -13,6 +13,9 @@ import { Content60, Content70, Content80, Content90, Content2000, ContentPlaceho
 
 // Interfaces to be used by React components
 import * as Interfaces from './interfaces';
+import { any } from 'prop-types';
+
+import * as router from './router';
 
 /*
  * I have now switched over to using Typescript which is more strongly typed than vanilla js and therefore provides better intellisense and such.
@@ -42,12 +45,13 @@ class Page extends Component<any, Interfaces.IPage> {
     constructor(props) {
         super(props);
 
-        // Get the page parameter
-        const page = getUrlParams().get('page');
+        // Get the page url parameter
+        var page = router.getPage();
+
+        if (page == null) router.setPage('hem');
 
         // The current page that is being displayed
-        // The component is stored in state so that the page will be automatically updated whenever the state changes
-        // Check if the url leads to the info page, so that one can link directly to the info page of this site
+        // The page component is stored in state so that the page will be automatically updated whenever the state changes
         this.state = {
             page: page == 'info' ? <Information/> : <Main/>
         };
@@ -68,8 +72,8 @@ class Page extends Component<any, Interfaces.IPage> {
             <div className="wrapper">
 
                 <Navigation>
-                    <Button onClick={() => this.showPage(<Main/>)}>Hem</Button>
-                    <Button onClick={() => this.showPage(<Information/>)}>Information</Button>
+                    <NavButton onClick={() => this.showPage(<Main/>)} path="hem">Hem</NavButton>
+                    <NavButton onClick={() => this.showPage(<Information/>)} path="info">Information</NavButton>
                 </Navigation>
 
                 {this.state.page}
@@ -265,12 +269,53 @@ class TimeLine extends Component {
 /**
  * A bar/ribbon at the top of the page that contains buttons for major navigation.
  */
-class Navigation extends Component {
+class Navigation extends Component<any, any> {
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <nav className="navigation">
                 {this.props.children}
             </nav>
+        );
+    }
+}
+
+/**
+ * Navigation button.
+ */
+export class NavButton extends Component<{onClick : () => void; path : string}, any> {
+
+    constructor(props) {
+        super(props);
+    }
+    
+    getClass() : string {
+        var className = 'link button';
+
+        if (this.props.path == router.getPage()) {
+            className += ' active';
+        }
+
+        return className;
+    }
+
+    handleClick() {
+
+        // Change the URL to this buttons path
+        router.setPage(this.props.path);
+
+        // Because onClick changes the state in the Page component this will rerender this component and therefore apply the active class from getClass() correctly
+        this.props.onClick();
+
+    }
+
+    render() {
+        return (
+            <a onClick={() => this.handleClick()} className={this.getClass()}>{this.props.children}</a>
         );
     }
 }

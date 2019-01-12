@@ -3,6 +3,9 @@
  */
 export interface IVisibility {
 
+    /**
+     * If the component is visible.
+     */
     visible : string
 
 }
@@ -12,6 +15,9 @@ export interface IVisibility {
  */
 export interface IContent {
 
+    /**
+     * The content that is to be displayed in the component.
+     */
     content : JSX.Element
 
 }
@@ -21,8 +27,11 @@ export interface IContent {
  */
 export interface IPage {
 
+    /**
+     * The page that is to be displayed in the component.
+     */
     page : JSX.Element
-
+    
 }
 
 /**
@@ -30,6 +39,9 @@ export interface IPage {
  */
 export interface IOnClick {
 
+    /**
+     * The function that should be called when the component is clicked.
+     */
     onClick : Function
 
 }

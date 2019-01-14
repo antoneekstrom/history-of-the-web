@@ -13,9 +13,9 @@ import { Content60, Content70, Content80, Content90, Content2000, ContentPlaceho
 
 // Interfaces to be used by React components
 import * as Interfaces from './interfaces';
-import { any } from 'prop-types';
 
-import * as router from './router';
+import * as Routing from './routing';
+import { Router } from './routing';
 
 /*
  * I have now switched over to using Typescript which is more strongly typed than vanilla js and therefore provides better intellisense and such.
@@ -25,7 +25,7 @@ import * as router from './router';
  * to be present in state and props.
  * 
  * class Element extends React.Component
- * --becomes
+ *      becomes
  * class Element extends React.Component<Props, State>
 */
 
@@ -42,41 +42,67 @@ export function getUrlParams() {
  */
 class Page extends Component<any, Interfaces.IPage> {
 
+    /**
+     * The router.
+     */
+    router : Router;
+
+    /**
+     * Pages mapped to a route.
+     */
+    pages : Routing.PageMap;
+
     constructor(props) {
         super(props);
 
-        // Get the page url parameter
-        var page = router.getPage();
+        this.pages = {
+            "hem": <Main/>,
+            "info": <Information/>,
+            "cool": <h1>cool</h1>
+        };
 
-        if (page == null) router.setPage('hem');
+        // The router takes in routes, pages and a pageHandler which is mapped to showing the page in this component.
+        this.router = new Router(this.pages, (page) => this.showPage(page), 'hem');
 
         // The current page that is being displayed
         // The page component is stored in state so that the page will be automatically updated whenever the state changes
         this.state = {
-            page: page == 'info' ? <Information/> : <Main/>
+            page: undefined
         };
     }
 
+    componentWillMount() {
+
+        // Set the page
+        Routing.setPage(Routing.getPage());
+    }
+
     /**
+     * Show a component on this page.
      * @param {Component} page the page component to show
      */
-    showPage(page) {
+    showPage(page : JSX.Element) {
         this.setState({page: page});
     }
 
+    /**
+     * Create the navigation buttons for the pages.
+     */
+    getNavButtons() : JSX.Element[] {
+        return Object.keys(this.pages).map((key) => <NavButton key={key} path={key}>{key}</NavButton>);
+    }
+
     render() {
+
         return (
             // The whole page is wrapped in a wrapper
             // Navigation contains the buttons in the top
             // Beneath, the state-page is being rendered
             <div className="wrapper">
 
-                <Navigation>
-                    <NavButton onClick={() => this.showPage(<Main/>)} path="hem">Hem</NavButton>
-                    <NavButton onClick={() => this.showPage(<Information/>)} path="info">Information</NavButton>
-                </Navigation>
+                <Navigation>{this.getNavButtons()}</Navigation>
+                <div className="page">{this.state.page}</div>
 
-                {this.state.page}
             </div>
         );
     }
@@ -287,7 +313,7 @@ class Navigation extends Component<any, any> {
 /**
  * Navigation button.
  */
-export class NavButton extends Component<{onClick : () => void; path : string}, any> {
+export class NavButton extends Component<any, any> {
 
     constructor(props) {
         super(props);
@@ -296,7 +322,7 @@ export class NavButton extends Component<{onClick : () => void; path : string}, 
     getClass() : string {
         var className = 'link button';
 
-        if (this.props.path == router.getPage()) {
+        if (this.props.path == Routing.getPage()) {
             className += ' active';
         }
 
@@ -306,10 +332,7 @@ export class NavButton extends Component<{onClick : () => void; path : string}, 
     handleClick() {
 
         // Change the URL to this buttons path
-        router.setPage(this.props.path);
-
-        // Because onClick changes the state in the Page component this will rerender this component and therefore apply the active class from getClass() correctly
-        this.props.onClick();
+        Routing.setPage(this.props.path);
 
     }
 

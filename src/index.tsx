@@ -9,7 +9,7 @@ import React, { ReactElement } from 'react';
 import { Component } from 'react';
 
 // Import "content" components from the other file
-import { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information } from './content';
+import { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information, Cool } from './content';
 
 // Interfaces to be used by React components
 import * as Interfaces from './interfaces';
@@ -58,7 +58,7 @@ class Page extends Component<any, Interfaces.IPage> {
         this.pages = {
             "hem": <Main/>,
             "info": <Information/>,
-            "cool": <h1>cool</h1>
+            "cool": <Cool/>,
         };
 
         // The router takes in routes, pages and a pageHandler which is mapped to showing the page in this component.
@@ -137,18 +137,20 @@ class Main extends Component<any, Interfaces.IContent> {
             // Page is divided into a top container and the timeline container that is below
             <main>
 
-                <div className="top-container">
-                    <Header/>
-                    <Content>{this.state.content}</Content>
+                <div className="main-inner-container">
+                    <div className="top-container">
+                        <Header/>
+                        <Content>{this.state.content}</Content>
+                    </div>
+    
+                    <TimeLine>
+                        <Period onClick={() => this.changeContent(<Content60/>)} tooltip="Arpanet" color="#1B998B">1960-talet</Period>
+                        <Period onClick={() => this.changeContent(<Content70/>)} tooltip="TCP/IP" color="#F18805">1970-talet</Period>
+                        <Period onClick={() => this.changeContent(<Content80/>)} tooltip="Något häftigt" color="#D95D39">1980-talet</Period>
+                        <Period onClick={() => this.changeContent(<Content90/>)} tooltip="Nätverk o sånt" color="#1D7874">1990-talet</Period>
+                        <Period onClick={() => this.changeContent(<Content2000/>)} tooltip="Google?" color="#EEBA0B">2000-talet</Period>
+                    </TimeLine>
                 </div>
-
-                <TimeLine>
-                    <Period onClick={() => this.changeContent(<Content60/>)} tooltip="Arpanet" color="#1B998B">1960-talet</Period>
-                    <Period onClick={() => this.changeContent(<Content70/>)} tooltip="TCP/IP" color="#F18805">1970-talet</Period>
-                    <Period onClick={() => this.changeContent(<Content80/>)} tooltip="Något häftigt" color="#D95D39">1980-talet</Period>
-                    <Period onClick={() => this.changeContent(<Content90/>)} tooltip="Nätverk o sånt" color="#1D7874">1990-talet</Period>
-                    <Period onClick={() => this.changeContent(<Content2000/>)} tooltip="Google?" color="#EEBA0B">2000-talet</Period>
-                </TimeLine>
 
             </main>
         );
@@ -338,7 +340,9 @@ export class NavButton extends Component<any, any> {
 
     render() {
         return (
-            <a onClick={() => this.handleClick()} className={this.getClass()}>{this.props.children}</a>
+            <div className="nav link link-container">
+                <a onClick={() => this.handleClick()} className={this.getClass()}>{this.props.children}</a>
+            </div>
         );
     }
 }
@@ -377,15 +381,18 @@ export class Button extends Link {
     }
 }
 
-/**
- * Not being used currently, footers are annoying
- */
-class Footer extends Component {
+export class Code extends Component<any, any> {
     render() {
         return (
-            <footer>
-                <a href="mailto:anton.ekstrom@elev.kungsbacka.se">Kontakta mig</a>
-            </footer>
+            <span className="code">{this.props.children}</span>
+        );
+    }
+}
+
+export class Italic extends Component<any, any> {
+    render() {
+        return (
+            <span className="italic">{this.props.children}</span>
         );
     }
 }

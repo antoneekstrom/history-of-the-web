@@ -8,6 +8,7 @@
     --background: rgb(231, 226, 226);
     --content-background: white;
 
+    --text-content-width: 40rem;
     --content-width: 90%;
 }
 
@@ -40,13 +41,31 @@ main {
     width: 100%;
 }
 
-.top-container {
+.main-inner-container {
     width: var(--content-width);
+}
+
+.text-content {
+    max-width: var(--text-content-width);
+}
+
+div.text-content {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-container {
 
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     flex-direction: row;
+}
+
+header {
+    width: 100%;
 }
 
 .top-container > header {
@@ -65,6 +84,7 @@ p {
     font-weight: lighter;
     font-size: 1.1rem;
     color: var(--font-dark);
+    line-height: 140%;
 }
 
 h1 {
@@ -119,7 +139,7 @@ ul a.link {
 }
 
 .timeline {
-    width: var(--content-width);
+    width: 100%;
     height: 3rem;
 
     display: flex;
@@ -189,20 +209,41 @@ a {
 }
 
 .navigation {
+    margin-top: 1rem;
     padding: 0.5rem;
 
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-direction: row;
+}
+
+.link.nav.link-container {
+    height: 100%;
+    width: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .link:hover:not(.button) {
     color: rgb(138, 137, 172);
 }
 
-.navigation a.link {
-    margin-left: 2rem;
+span.code {
+    font-weight: bold;
+    font-size: 90%;
+
+    background-color: rgb(236, 234, 241);
+    border: rgb(198, 197, 202) 0.1em solid;
+    border-radius: 0.3em;
+
+    padding: 0.05em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
+
+span.italic {
+    font-style: italic;
 }
 
 button {
@@ -212,8 +253,8 @@ button {
 .button {
     border-radius: 0.5em;
     padding: 0.2em;
-    padding-left: 0.4em;
-    padding-right: 0.4em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
     cursor: pointer;
 
     transition-property: color, background-color;
@@ -232,6 +273,9 @@ button {
 }
 
 @media screen and (max-width: 800px) {
+    .main-inner-container {
+        width: 100%;
+    }
     .header-inner-container {
         margin: 0;
     }
@@ -245,7 +289,7 @@ button {
     .timeline-container {
         margin-top: 5rem;
     }
-    .information-inner-container {
+    div.page {
         width: var(--content-width);
     }
     body {

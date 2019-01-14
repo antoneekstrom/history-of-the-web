@@ -2,7 +2,7 @@
 import React from 'react';
 import { Component } from 'react';
 
-import { Link } from "./index";
+import { Link, Italic, Code } from "./index";
 
 /*
  * 
@@ -22,7 +22,11 @@ class Information extends Component<any, any> {
             // Page is split into sections to create spacing between different parts
             <main className="information">
 
-                <div className="information-inner-container">
+                <header>
+                    <h1>Information</h1>
+                </header>
+
+                <div className="text-content">
                     <section>
                         <h2>Den här sidan är gjord av Anton Ekström.</h2>
                         <h3>Kontakta mig här:</h3>
@@ -123,5 +127,25 @@ class Content2000 extends Component<any, any> {
     }
 }
 
+class Cool extends Component<any, any> {
+    render() {
+        return (
+            <main className="cool">
+                <div className="text-content">
+                    <header>
+                        <h1>väldigt cool</h1>
+                        <h3>väldigt (väldigt) cool</h3>
+                    </header>
+    
+                    <section>
+                        <h2>coolt</h2>
+                        <p>Den här sidan är rätt cool om jag skall vara helt ärlig. Med hjälp av <a href="http://reactjs.org">React</a> har jag gjort en sida som uppdateras dynamiskt men som fortfarande kan navigeras med hjälp av <Code>URL</Code>:en i adressfältet. Ett litet problem var att den här sidan är hostad av ett webbhotell och därför kan jag inte kontrollera server-sidad <Code>routing</Code> själv. Min lösning var att använda mig av sökparametrar istället för att navigera sidan med snedstreck <Code>/</Code>. Detta ser inte like fint/intuitivt ut men det fungerar ganska väl.</p>
+                    </section>
+                </div>
+            </main>
+        );
+    }
+}
+
 // Export all the components
-export { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information }; 
+export { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information, Cool }; 

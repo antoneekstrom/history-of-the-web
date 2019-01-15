@@ -59,6 +59,7 @@ class Page extends Component<any, Interfaces.IPage> {
             "hem": <Main/>,
             "info": <Information/>,
             "cool": <Cool/>,
+            "nice": <h1>nice</h1>
         };
 
         // The router takes in routes, pages and a pageHandler which is mapped to showing the page in this component.
@@ -386,6 +387,12 @@ export class Code extends Component<any, any> {
         return (
             <span className="code">{this.props.children}</span>
         );
+    }
+}
+
+export class ActiveButton extends Button {
+    getClass() {
+        return super.getClass() + " active";
     }
 }
 

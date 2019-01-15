@@ -57,6 +57,7 @@ div.text-content {
 }
 
 .top-container {
+    max-height: 21rem;
 
     display: flex;
     justify-content: space-between;
@@ -81,7 +82,14 @@ header {
 
 article.content {
     overflow-y: auto;
-    max-height: 20rem;
+}
+
+address {
+    font-style: normal;
+}
+
+main.information a {
+    font-style: italic;
 }
 
 ::-webkit-scrollbar {
@@ -128,6 +136,10 @@ h3 {
     font-weight: lighter;
     font-size: 1.4rem;
     color: var(--font-lighter);
+}
+
+h3.less-margin {
+    margin-bottom: 0.2rem;
 }
 
 section {

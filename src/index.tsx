@@ -72,6 +72,7 @@ class Page extends Component<any, Interfaces.IPage> {
         };
     }
 
+    // Invoked when the component is loaded into the page
     componentWillMount() {
 
         // Set the page
@@ -369,6 +370,17 @@ export class Link extends Component<any, any> {
     render() {
         return (
             <a className={this.getClass()} onClick={() => this.onClick()} href={this.props.href} target="_blank">{this.props.children}</a>
+        );
+    }
+}
+
+export class CodeBlock extends Component<{lang : string}, any> {
+
+    render() {
+        return (
+            <pre className={"language-" + this.props.lang}>
+                <code className={"language-" + this.props.lang}>{this.props.children}</code>
+            </pre>
         );
     }
 }

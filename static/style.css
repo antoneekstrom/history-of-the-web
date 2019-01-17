@@ -81,6 +81,7 @@ header {
 
 article.content {
     overflow-y: auto;
+    padding-right: 1rem;
 }
 
 address {

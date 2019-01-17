@@ -64,8 +64,8 @@ class Page extends Component<any, Interfaces.IPage> {
 
         this.pages = {
             "hem": <Main/>,
-            "information": <Information/>,
             "om sidan": <OmSidan/>,
+            "information": <Information/>
         };
 
         // The router takes in routes, pages and a pageHandler which is mapped to showing the page in this component.

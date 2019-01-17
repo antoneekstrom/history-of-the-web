@@ -156,6 +156,11 @@ class OmSidan extends Component<any, any> {
                     <section>
                         <h2>Dynamisk webbsida</h2>
                         <p>Den här sidan är rätt cool om jag skall vara helt ärlig. Med hjälp av <Link href="http://reactjs.org">React</Link> har jag gjort en sida som uppdateras dynamiskt men som fortfarande kan navigeras med hjälp av <Code>URL</Code>:en i adressfältet. Ett litet problem var att den här sidan är hostad av ett webbhotell och därför kan jag inte kontrollera server-sidad <Code>routing</Code> själv. Min lösning var att använda mig av sökparametrar istället för att navigera sidan med snedstreck <Code>/</Code>. Detta ser inte like fint/intuitivt ut men det fungerar ganska väl.</p>
+                    </section>
+                    <section>
+                        <h2>Typescript</h2>
+                        <h3>Om Typescript</h3>
+                        <p>Den här hemsidan är skriven i <Link href="https://www.typescriptlang.org/">Typescript</Link> vilket är ett programmeringsspråk som är ett <Link href="https://en.wikipedia.org/wiki/Subset">superset</Link> av javascript. Det här betyder att det är väldigt likt JS, all javascript kod är också fungerande Typescript. Det som är bra med Typescript är att det är mer <Italic>starkt skrivet</Italic> (<Link href="https://en.wikipedia.org/wiki/Strong_and_weak_typing">strongly typed</Link>). Något som kan vara lite jobbigt med javascript är att språket inte riktigt bryr sig om vad man gör när man skriver språket i sin IDE. Språket är väldigt <Code>weakly typed</Code> ger inte särskilt mycket feedback när man programmerar.</p>
 
                         <h3>Exempel</h3>
                         <p>I Typescript kan man specifiera typen av variabel i koden.</p>
@@ -183,11 +188,6 @@ coolFunktion : (s : string) => void;
 niceObjekt : {nice : boolean; epic : string};
                         `}
                         </CodeBlock>
-                    </section>
-                    <section>
-                        <h2>Typescript</h2>
-                        <h3>Om Typescript</h3>
-                        <p>Den här hemsidan är skriven i <Link href="https://www.typescriptlang.org/">Typescript</Link> vilket är ett programmeringsspråk som är ett <Link href="https://en.wikipedia.org/wiki/Subset">superset</Link> av javascript. Det här betyder att det är väldigt likt JS, all javascript kod är också fungerande Typescript. Det som är bra med Typescript är att det är mer <Italic>starkt skrivet</Italic> (<Link href="https://en.wikipedia.org/wiki/Strong_and_weak_typing">strongly typed</Link>). Något som kan vara lite jobbigt med javascript är att språket inte riktigt bryr sig om vad man gör när man skriver språket i sin IDE. Språket är väldigt <Code>weakly typed</Code> ger inte särskilt mycket feedback när man programmerar.</p>
 
                         <h3>Språket kompileras</h3>
                         <p>Typescript är bra eftersom det inte låter dig kompilera koden om det är fel på koden. Det här gör att man kan upptäcka många fel innan man kör programmet. Typescript kan inte köras direkt av webbläsaren utan måste först kompileras till vanlig javascript. Jag använder mig av <Link href="">webpack</Link> för att inkludera moduler från <Link>npm</Link> och för att kompilera. Källkoden omvandlas då till en enda <Code>bundle.js</Code> fil som presenteras som en statisk fil på sidan.</p>

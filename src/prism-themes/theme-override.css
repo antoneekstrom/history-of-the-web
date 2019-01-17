@@ -1,0 +1,12 @@
+main pre[class*="language-"]>code {
+    border-left: 10px solid var(--font-lighter);
+    box-shadow: -1px 0px 0px 0px var(--font-link), 0px 0px 0px 1px var(--font-link);
+}
+
+.token.keyword {
+    font-weight: bold;
+}
+
+.token.selector, .token.attr-name, .token.string, .token.char, .token.function, .token.builtin, .token.inserted {
+    color: rgb(226, 145, 24);
+}

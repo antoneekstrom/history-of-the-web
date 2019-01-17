@@ -9,13 +9,20 @@ import React, { ReactElement } from 'react';
 import { Component } from 'react';
 
 // Import "content" components from the other file
-import { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information, Cool } from './content';
+import { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information, OmSidan } from './content';
 
 // Interfaces to be used by React components
 import * as Interfaces from './interfaces';
 
+// Router, for routing
 import * as Routing from './routing';
 import { Router } from './routing';
+
+// Prismjs, for styling code blocks
+import 'prismjs/components/prism-core';
+import Prism from 'prismjs';
+
+import './prism-themes/theme-override.css'
 
 /*
  * I have now switched over to using Typescript which is more strongly typed than vanilla js and therefore provides better intellisense and such.
@@ -57,9 +64,8 @@ class Page extends Component<any, Interfaces.IPage> {
 
         this.pages = {
             "hem": <Main/>,
-            "info": <Information/>,
-            "cool": <Cool/>,
-            "nice": <h1>nice</h1>
+            "information": <Information/>,
+            "om sidan": <OmSidan/>,
         };
 
         // The router takes in routes, pages and a pageHandler which is mapped to showing the page in this component.
@@ -85,6 +91,11 @@ class Page extends Component<any, Interfaces.IPage> {
      */
     showPage(page : JSX.Element) {
         this.setState({page: page});
+    }
+
+    componentDidUpdate() {
+        console.log('highlight');
+        Prism.highlightAll();
     }
 
     /**
@@ -147,9 +158,9 @@ class Main extends Component<any, Interfaces.IContent> {
     
                     <TimeLine>
                         <Period onClick={() => this.changeContent(<Content60/>)} tooltip="Arpanet" color="#1B998B">1960-talet</Period>
-                        <Period onClick={() => this.changeContent(<Content70/>)} tooltip="TCP/IP" color="#F18805">1970-talet</Period>
-                        <Period onClick={() => this.changeContent(<Content80/>)} tooltip="Något häftigt" color="#D95D39">1980-talet</Period>
-                        <Period onClick={() => this.changeContent(<Content90/>)} tooltip="Nätverk o sånt" color="#1D7874">1990-talet</Period>
+                        <Period onClick={() => this.changeContent(<Content70/>)} tooltip="Internet" color="#F18805">1970-talet</Period>
+                        <Period onClick={() => this.changeContent(<Content80/>)} tooltip="TCP/IP" color="#D95D39">1980-talet</Period>
+                        <Period onClick={() => this.changeContent(<Content90/>)} tooltip="World Wide Web" color="#1D7874">1990-talet</Period>
                         <Period onClick={() => this.changeContent(<Content2000/>)} tooltip="Google?" color="#EEBA0B">2000-talet</Period>
                     </TimeLine>
                 </div>

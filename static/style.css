@@ -45,11 +45,10 @@ main {
     width: var(--content-width);
 }
 
-.text-content {
+div.text-content, article.text-content {
     max-width: var(--text-content-width);
-}
+    width: 100%;
 
-div.text-content {
     display: flex;
     justify-content: start;
     flex-direction: column;
@@ -325,14 +324,4 @@ button {
     body {
         font-size: 16px;
     }
-}
-
-/* The footer is not being used at the moment. */
-footer {
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding-top: 1rem;
 }

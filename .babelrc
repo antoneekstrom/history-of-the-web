@@ -4,4 +4,12 @@
         "@babel/preset-react",
         "@babel/preset-typescript"
     ],
+    "plugins": [
+        ["prismjs", {
+            "languages": ["java", "css", "markup", "javascript", "typescript", "jsx"],
+            "plugins": ["line-numbers"],
+            "theme": "coy",
+            "css": true
+        }]
+    ]
 }

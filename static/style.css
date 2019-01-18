@@ -287,6 +287,8 @@ button {
     padding-right: 0.5em;
     cursor: pointer;
 
+    box-sizing: border-box;
+
     transition-property: color, background-color;
     transition-timing-function: ease-out;
     transition-duration: 0.2s;
@@ -302,17 +304,27 @@ button {
     color: var(--content-background);
 }
 
+.button.filled {
+    background-color: var(--font-lighter);
+    color: var(--content-background);
+}
+
+.button.filled:hover {
+    background-color: var(--background);
+    color: var(--font-lighter);
+}
+
 div.backtotop {
-    display: none;
+    position: fixed;
+    top: -30%;
+    z-index: 5;
 
     transition-property: all;
     transition-duration: 1s;
 }
 
 div.backtotop.active {
-    display: block;
-    top: 0;
-    position: sticky;
+    top: 1rem;
 }
 
 @media screen and (max-width: 800px) {

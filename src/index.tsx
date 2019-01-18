@@ -94,7 +94,6 @@ class Page extends Component<any, Interfaces.IPage> {
     }
 
     componentDidUpdate() {
-        console.log('highlight');
         Prism.highlightAll();
     }
 
@@ -318,11 +317,10 @@ export class BackToTopButton extends Component<{minHeight : number}, {visible : 
 
     componentDidMount() {
         window.addEventListener('scroll', (e) => {
+            
             const y = window.scrollY;
             const v = this.state.visible;
             const height = y >= this.props.minHeight;
-
-            console.log(y);
 
             if (height && !v) this.setState({visible: true})
             else if (!height && v) this.setState({visible: false});
@@ -340,7 +338,7 @@ export class BackToTopButton extends Component<{minHeight : number}, {visible : 
     render() {
         return (
             <div className={`backtotop ${this.state.visible ? 'active' : ''}`}>
-                <ActiveButton onClick={() => this.handleClick()}>Tillbaka upp</ActiveButton>
+                <FilledButton onClick={() => this.handleClick()}>Tillbaka upp</FilledButton>
             </div>
         );
     }
@@ -463,9 +461,9 @@ export class Code extends Component<any, any> {
     }
 }
 
-export class ActiveButton extends Button {
+export class FilledButton extends Button {
     getClass() {
-        return super.getClass() + " active";
+        return super.getClass() + " filled";
     }
 }
 

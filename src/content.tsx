@@ -2,7 +2,7 @@
 import React from 'react';
 import { Component } from 'react';
 
-import { Link, Italic, Code, ActiveButton, CodeBlock, Button, Navigation, NavButton, SectionNavButton, BackToTopButton } from "./index";
+import { Link, Italic, Code, CodeBlock, Button, Navigation, NavButton, SectionNavButton, BackToTopButton } from "./index";
 import { any } from 'prop-types';
 
 /*
@@ -202,9 +202,38 @@ class RoutingInfo extends Component<any, any> {
     render() {
         return (
             <section id="routing-info">
+
                 <h2>Routing</h2>
+                
                 <h3>Hur sidan hanterar navigering mellan olika delar av innehållet.</h3>
-                <p></p>
+                <p>Som jag skrev lite längre upp på sidan så blev det svårt att använda <Code>/</Code> för att navigera olika routes. Det kan ha varit möjligt men jag tänkte inte på det då så jag fick komma på en annan lösning. Jag använder så kallade URL parametrar vilket är de specifikationer man kan ange i en webbadress. Parametrar specifieras efter frågetecknet <Code>?</Code> i en URL, såhär <Code>http://microswag.online/?page=hem</Code>. Parametrarna separeras med ett <Code>{`&`}</Code> tecken. De består av en nyckel (<Code>page</Code>), och ett värde (<Code>hem</Code>).</p>
+
+                <p>All min routing sker i ett <Code>Router</Code> objekt. För att byta sida har jag en metod <Code>setPage(path : string, data ?: any)</Code> som är definerad på det här viset:</p>
+                <CodeBlock lang="typescript">
+                {`
+export function setPage(path : string, data ?: any) {
+
+    // Set the page paramater
+    setUrlParameter('page', path, data);
+
+    // Manually trigger onpopstate
+    var popStateEvent = new PopStateEvent('popstate', { state: data });
+    dispatchEvent(popStateEvent);
+}
+                `}
+                </CodeBlock>
+
+                <p>För att sidan alltid skall bytas när adressen ändras använder jag <Code>onpopstate</Code> event för att observera när adressen ändras. Enda problemet var att onpopstate inte körs när man manipulerar adressen med <Code>history.pushState()</Code>, så därför behöver jag aktivera det manuellt i slutet av metoden.</p>
+                <p>I Router objektet ger jag en funktion <Code>(page) => this.showPage(page)</Code> som aktiveras av onpopstate och tar in sidan i form av ett JSX element. Det här elementet har blivit tilldelad en route i ett vanligt JS objekt. Det här gör det väldigt enkelt att lägga till fler sidor, eftersom man endast behöver göra såhär:</p>
+                <CodeBlock lang="typescript">
+                {`
+this.pages = {
+    "hem": <Main/>,
+    "om sidan": <OmSidan/>,
+    "information": <Information/>
+};
+                `}
+                </CodeBlock>
             </section>
         );
     }

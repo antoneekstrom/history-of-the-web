@@ -307,10 +307,49 @@ class TimeLine extends Component {
     }
 }
 
+export class BackToTopButton extends Component<{minHeight : number}, {visible : boolean}> {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            visible: false
+        };
+    }
+
+    componentDidMount() {
+        window.addEventListener('scroll', (e) => {
+            const y = window.scrollY;
+            const v = this.state.visible;
+            const height = y >= this.props.minHeight;
+
+            console.log(y);
+
+            if (height && !v) this.setState({visible: true})
+            else if (!height && v) this.setState({visible: false});
+        });
+    }
+
+    scrollToTop() {
+        scrollTo(0,0);
+    }
+
+    handleClick() {
+        this.scrollToTop();
+    }
+    
+    render() {
+        return (
+            <div className={`backtotop ${this.state.visible ? 'active' : ''}`}>
+                <ActiveButton onClick={() => this.handleClick()}>Tillbaka upp</ActiveButton>
+            </div>
+        );
+    }
+}
+
 /**
  * A bar/ribbon at the top of the page that contains buttons for major navigation.
  */
-class Navigation extends Component<any, any> {
+export class Navigation extends Component<any, any> {
 
     constructor(props) {
         super(props);
@@ -322,6 +361,17 @@ class Navigation extends Component<any, any> {
                 {this.props.children}
             </nav>
         );
+    }
+}
+
+export class SectionNavButton extends Component<{id : string}, any> {
+    render() {
+        return (
+            <div className="nav link link-container">
+                <a className="link button" href={`#${this.props.id}`}>{this.props.children}</a>
+            </div>
+        );
+
     }
 }
 

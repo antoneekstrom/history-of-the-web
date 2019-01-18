@@ -2,7 +2,8 @@
 import React from 'react';
 import { Component } from 'react';
 
-import { Link, Italic, Code, ActiveButton, CodeBlock, Button } from "./index";
+import { Link, Italic, Code, ActiveButton, CodeBlock, Button, Navigation, NavButton, SectionNavButton, BackToTopButton } from "./index";
+import { any } from 'prop-types';
 
 /*
  * 
@@ -127,6 +128,15 @@ class Content90 extends Component<any, any> {
 
                 <h3>1993</h3>
                 <p><Link href="https://en.wikipedia.org/wiki/World_Wide_Web">The World Wide Web</Link> hade börjat ta fart men samtidigt utvecklades en konkurrent som kallas <Link href="https://en.wikipedia.org/wiki/Gopher_(protocol)">Gopher</Link> och många trodde att detta skulle bli det ledande nätet. Det dröjde inte länge innan webbläsaren <Link>Mosaic</Link> utvecklades som var mycket häftig på den tiden och då blev Gopher mindre aktuellt. Mosaic kunde till och med visa bilder vilket var oerhört nice.</p>
+
+                <h3>1995</h3>
+                <p>Det här året ökar internet hastigheterna i Sverige mycket mycket. Det här är på grund av en kabel som dras över atlanten, denna kabel har en hastighet på 34 Mbit/s. Det här blev då för tillfället världens snabbaste internationella internet förbindelse.</p>
+
+                <h3>1995 - 1996</h3>
+                <p>Året 95 uppstod en häftig sökmotor med namnet <Link href="https://en.wikipedia.org/wiki/AltaVista">Altavista</Link> som lät användaren söka igenom sidor på internet helt automatiskt. Det här blev mycket populärt. Under de kommande åren ökar mängden hemsidor till höga mängder vilket gjorde en sökmotor ännu mer användbart.</p>
+
+                <h3>1998</h3>
+                <p>1998 grundades det jätte coola företaget <Link href="https://google.com/">Google</Link> i Kalifornien av <Link href="https://en.wikipedia.org/wiki/Larry_Page">Larry Page</Link> och <Link href="https://en.wikipedia.org/wiki/Sergey_Brin">Sergey Brin</Link>. Det är lite sådär häftigt och sådant eftersom Google är rätt stort nuförtiden. Själv tycker jag om Google. Jag upskattar deras fina <Link href="https://material.io/design/">UI design</Link>.</p>
             </div>
         );
     }
@@ -137,7 +147,7 @@ class Content2000 extends Component<any, any> {
         return (
             <div>
                 <h2>2000-talet</h2>
-                <p>Wow då hände det mycket alltså, du skulle bara veta allt som hände, herregud det var makalöst faktiskt.</p>
+                <p>Wow då hände det mycket alltså, du skulle bara veta allt som hände, herregud det var makalöst faktiskt. Många var rädda för sekelskiftet år 2000. Detta var eftersom mjukvaran på många tekniska apparater inte var tänkta att vara kvar ända tills nästa sekel. Det var nämligen så att årtal endast lagrades med två siffror. Året 1999 såg datorerna som <Code>99</Code> och därför skulle klockorna stå <Code>00</Code> det vill säga 1900 när året egentligen var 2000. Det hade potential att ge katastrofala följder när allt från flygplan till elbolag skulle sluta fungera. Som tur var alla mycket förberedda just för att det var så mycket oro kring detta. Den hur buggen brukar kallas för y2k eller <Link href="https://en.wikipedia.org/wiki/Year_2000_problem">year 2000 problem</Link>.</p>
             </div>
         );
     }
@@ -148,52 +158,127 @@ class OmSidan extends Component<any, any> {
         return (
             <main className="cool">
                 <article className="text-content">
-                    <header>
-                        <h1>Om sidan</h1>
-                        <h3>Den är väldigt (väldigt) cool, faktiskt då asså. Hell yeah brother.</h3>
-                    </header>
-    
-                    <section>
-                        <h2>Dynamisk webbsida</h2>
-                        <p>Den här sidan är rätt cool om jag skall vara helt ärlig. Med hjälp av <Link href="http://reactjs.org">React</Link> har jag gjort en sida som uppdateras dynamiskt men som fortfarande kan navigeras med hjälp av <Code>URL</Code>:en i adressfältet. Ett litet problem var att den här sidan är hostad av ett webbhotell och därför kan jag inte kontrollera server-sidad <Code>routing</Code> själv. Min lösning var att använda mig av sökparametrar istället för att navigera sidan med snedstreck <Code>/</Code>. Detta ser inte like fint/intuitivt ut men det fungerar ganska väl.</p>
-                    </section>
-                    <section>
-                        <h2>Typescript</h2>
-                        <h3>Om Typescript</h3>
-                        <p>Den här hemsidan är skriven i <Link href="https://www.typescriptlang.org/">Typescript</Link> vilket är ett programmeringsspråk som är ett <Link href="https://en.wikipedia.org/wiki/Subset">superset</Link> av javascript. Det här betyder att det är väldigt likt JS, all javascript kod är också fungerande Typescript. Det som är bra med Typescript är att det är mer <Italic>starkt skrivet</Italic> (<Link href="https://en.wikipedia.org/wiki/Strong_and_weak_typing">strongly typed</Link>). Något som kan vara lite jobbigt med javascript är att språket inte riktigt bryr sig om vad man gör när man skriver språket i sin IDE. Språket är väldigt <Code>weakly typed</Code> ger inte särskilt mycket feedback när man programmerar.</p>
 
-                        <h3>Exempel</h3>
-                        <p>I Typescript kan man specifiera typen av variabel i koden.</p>
-                        <CodeBlock lang="typescript">
-                        {`
-function cool(nice : number) : number {
-    return nice * 3;
+                <BackToTopButton minHeight={600} />
+
+                    <DynamicPageInfo/>
+
+                    <h3 className="less-margin">Navigera innehållet:</h3>
+                    <Navigation>
+                        <SectionNavButton id="typescript-info">Typescript</SectionNavButton>
+                        <SectionNavButton id="routing-info">Routing</SectionNavButton>
+                        <SectionNavButton id="react-info">React</SectionNavButton>
+                    </Navigation>
+
+                    <TypeScriptInfo/>
+                    <RoutingInfo/>
+                    <ReactInfo/>
+
+                </article>
+            </main>
+        );
+    }
 }
-                        `}
-                        </CodeBlock>
-                        <p>Det går att skapa interfaces för att göra mallar för object och klasser.</p>
-                        <CodeBlock lang="typescript">
-                        {`
-interface Despacito {
+
+class DynamicPageInfo extends Component<any, any> {
+    render() {
+        return (
+            <div>
+                <header>
+                    <h1>Om sidan</h1>
+                    <h3>Den är väldigt (väldigt) cool, faktiskt då asså. Hell yeah brother.</h3>
+                </header>
+
+                <section id="dynamisk-sida-info">
+                    <h2>Dynamisk webbsida</h2>
+                    <p>Den här sidan är rätt cool om jag skall vara helt ärlig. Med hjälp av <Link href="http://reactjs.org">React</Link> har jag gjort en sida som uppdateras dynamiskt men som fortfarande kan navigeras med hjälp av <Code>URL</Code>:en i adressfältet. Ett litet problem var att den här sidan är hostad av ett webbhotell och därför kan jag inte kontrollera server-sidad <Code>routing</Code> själv. Min lösning var att använda mig av sökparametrar istället för att navigera sidan med snedstreck <Code>/</Code>. Detta ser inte like fint/intuitivt ut men det fungerar ganska väl.</p>
+                </section>
+            </div>
+        );
+    }
+}
+
+class RoutingInfo extends Component<any, any> {
+    render() {
+        return (
+            <section id="routing-info">
+                <h2>Routing</h2>
+                <h3>Hur sidan hanterar navigering mellan olika delar av innehållet.</h3>
+                <p></p>
+            </section>
+        );
+    }
+}
+
+class TypeScriptInfo extends Component<any, any> {
+    render() {
+        return (
+            <section id="typescript-info">
+                <h2>Typescript</h2>
+                <h3>Om Typescript</h3>
+                <p>Den här hemsidan är skriven i <Link href="https://www.typescriptlang.org/">Typescript</Link> vilket är ett programmeringsspråk som är ett <Link href="https://en.wikipedia.org/wiki/Subset">superset</Link> av javascript. Det här betyder att det är väldigt likt JS, all javascript kod är också fungerande Typescript. Det som är bra med Typescript är att det är mer <Italic>starkt skrivet</Italic> (<Link href="https://en.wikipedia.org/wiki/Strong_and_weak_typing">strongly typed</Link>). Något som kan vara lite jobbigt med javascript är att språket inte riktigt bryr sig om vad man gör när man skriver språket i sin IDE. Språket är väldigt <Code>weakly typed</Code> och ger därför inte särskilt mycket feedback när man programmerar.</p>
+
+                <h3>Exempel</h3>
+                <p>I Typescript kan man specifiera typen av variabel i koden.</p>
+                <CodeBlock lang="typescript">
+                {`
+    function cool(nice : number) : number {
+    return nice * 3;
+    }
+                `}
+                </CodeBlock>
+                <p>Det går att skapa interfaces för att göra mallar för object och klasser.</p>
+                <CodeBlock lang="typescript">
+                {`
+    interface Despacito {
     heck : string;
     yeah : number;
     brother : boolean;
-}
-                        `}
-                        </CodeBlock>
-                        <p>Det går till och med att specifiera typen av funktion eller object som skall finnas i en variabel eller tas in av en function.</p>
-                        <CodeBlock lang="typescript">
-                        {`
-coolFunktion : (s : string) => void;
-niceObjekt : {nice : boolean; epic : string};
-                        `}
-                        </CodeBlock>
+    }
+                `}
+                </CodeBlock>
+                <p>Det går till och med att specifiera typen av funktion eller object som skall finnas i en variabel eller tas in av en function.</p>
+                <CodeBlock lang="typescript">
+                {`
+    coolFunktion : (s : string) => void;
+    niceObjekt : {nice : boolean; epic : string};
+                `}
+                </CodeBlock>
 
-                        <h3>Språket kompileras</h3>
-                        <p>Typescript är bra eftersom det inte låter dig kompilera koden om det är fel på koden. Det här gör att man kan upptäcka många fel innan man kör programmet. Typescript kan inte köras direkt av webbläsaren utan måste först kompileras till vanlig javascript. Jag använder mig av <Link href="">webpack</Link> för att inkludera moduler från <Link>npm</Link> och för att kompilera. Källkoden omvandlas då till en enda <Code>bundle.js</Code> fil som presenteras som en statisk fil på sidan.</p>
-                    </section>
-                </article>
-            </main>
+                <h3>Språket kompileras</h3>
+                <p>Typescript är bra eftersom det inte låter dig kompilera koden om det är fel på koden. Det här gör att man kan upptäcka många fel innan man kör programmet. Typescript kan inte köras direkt av webbläsaren utan måste först kompileras till vanlig javascript. Jag använder mig av <Link href="">webpack</Link> för att inkludera moduler från <Link>npm</Link> och för att kompilera. Källkoden omvandlas då till en enda <Code>bundle.js</Code> fil som presenteras som en statisk fil på sidan.</p>
+            </section>
+        );
+    }
+}
+
+class ReactInfo extends Component<any, any> {
+    render() {
+        return(
+            <section id="react-info">
+                <h2>React</h2>
+                <h3>Hur det används på sidan</h3>
+                <p><Link href="reactjs.org">React</Link> är ett javascript bibliotek för att bygga gränssnitt. Det är bra på att bygga interaktiva hemsidor med mycket dynamik och funktion. I React använder man <Code>Components</Code> för att återanvända kod och för att strukturera sidan på ett bra sätt. Eftersom jag använder Typscript ser det lite annorlunda ut men en komponent deklareras så här:</p>
+                <CodeBlock lang="typescript">
+                {`
+class EnKomponent extends Component<Props, State> {
+    render() {
+        return (
+            <h1>epic gamer moment</h1>
+        );
+    }
+}
+                `}
+                </CodeBlock>
+                <p>En komponent använder sig av <Code>props</Code> och <Code>state</Code>. Props är bl.a. de attributer som anger och state är variabler som kan använda i sin komponent. State ändrar man med <Code>this.setState(state : Object)</Code>, när man använder den metoden uppdateras komponenten automatiskt med den nya datan.</p>
+                <h3>JSX</h3>
+                <p>React använder något som de kallar för <Code>JSX</Code> vilket introducerar XML liknande syntax till React. Det gillar jag mycket eftersom det gör det intuitivt att arbeta med komponenter. När man använder JSX är det nästan som att använda <Code>HTML</Code> fast med sina egna taggar. När man renderar en komponent ser ut på detta viset:</p>
+                <CodeBlock lang="typescript">
+                {`
+ReactDOM.render(<EnKomponent/>, document.getElementById('root'));
+                `}
+                </CodeBlock>
+            </section>
         );
     }
 }

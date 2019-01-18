@@ -302,6 +302,19 @@ button {
     color: var(--content-background);
 }
 
+div.backtotop {
+    display: none;
+
+    transition-property: all;
+    transition-duration: 1s;
+}
+
+div.backtotop.active {
+    display: block;
+    top: 0;
+    position: sticky;
+}
+
 @media screen and (max-width: 800px) {
     .main-inner-container {
         width: 100%;

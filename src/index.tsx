@@ -9,7 +9,7 @@ import React, { ReactElement } from 'react';
 import { Component } from 'react';
 
 // Import "content" components from the other file
-import { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information, OmSidan } from './content';
+import { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information, OmSidan, ContentFramtiden } from './content';
 
 // Interfaces to be used by React components
 import * as Interfaces from './interfaces';
@@ -160,7 +160,8 @@ class Main extends Component<any, Interfaces.IContent> {
                         <Period onClick={() => this.changeContent(<Content70/>)} tooltip="Internet" color="#F18805">1970-talet</Period>
                         <Period onClick={() => this.changeContent(<Content80/>)} tooltip="TCP/IP" color="#D95D39">1980-talet</Period>
                         <Period onClick={() => this.changeContent(<Content90/>)} tooltip="World Wide Web" color="#1D7874">1990-talet</Period>
-                        <Period onClick={() => this.changeContent(<Content2000/>)} tooltip="Google?" color="#EEBA0B">2000-talet</Period>
+                        <Period onClick={() => this.changeContent(<Content2000/>)} tooltip="Y2K" color="#EEBA0B">2000-talet</Period>
+                        <Period onClick={() => this.changeContent(<ContentFramtiden/>)} tooltip="Web 3.0" color="#4971af">Framtiden?</Period>
                     </TimeLine>
                 </div>
 

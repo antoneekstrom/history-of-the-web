@@ -106,8 +106,10 @@ class Content80 extends Component<any, any> {
         return (
             <div>
                 <h2>1980-talet</h2>
-                <p>Första januari 1983 övergick Arpanet från <Link href="https://en.wikipedia.org/wiki/Network_Control_Program">NCP</Link> till <Link href="https://en.wikipedia.org/wiki/Internet_protocol_suite">TCP/IP</Link> protokollet som var mer flexibelt. I Sverige skedde den första Internet uppkopplingen 1984 på Chalmers. I Sverige handlade utvecklingen under 80-talet mest om universiteten som kopplas samman med hjälp av nätet för att dela forskning och information.</p>
+                <p>Den första personen i Sverige som tog emot ett e-post meddelande var människan <Link href="https://sv.wikipedia.org/wiki/Bj%C3%B6rn_Eriksen">Björn Eriksen</Link> och det här skedde året 1983, den sjunde april. Året efter det skedde den första Internet uppkopplingen på Chalmers. I Sverige handlade utvecklingen under 80-talet mest om universiteten som kopplas samman med hjälp av nätet för att dela forskning och information.</p>
+                
                 <h3>Internet Protocol Suite</h3>
+                <p>Första januari 1983 övergick också Arpanet från <Link href="https://en.wikipedia.org/wiki/Network_Control_Program">NCP</Link> till <Link href="https://en.wikipedia.org/wiki/Internet_protocol_suite">TCP/IP</Link> protokollet som var mer flexibelt.</p>
                 <p>Också känt som <Code>TCP/IP</Code> eftersom <Code>TCP</Code> och <Code>IP</Code> är de underliggande protokollen som systemet bygger på. Protokollen specifierar hur kommunikation bör ske mellan enheter. Systemet delas upp i fyra lager som klassifierar de olika protokollen. Alla enheter som kopplas upp direkt till nätet får en egen unik IP adress som används för kommunikation mellan enheter.</p>
             </div>
         );
@@ -148,6 +150,17 @@ class Content2000 extends Component<any, any> {
             <div>
                 <h2>2000-talet</h2>
                 <p>Wow då hände det mycket alltså, du skulle bara veta allt som hände, herregud det var makalöst faktiskt. Många var rädda för sekelskiftet år 2000. Detta var eftersom mjukvaran på många tekniska apparater inte var tänkta att vara kvar ända tills nästa sekel. Det var nämligen så att årtal endast lagrades med två siffror. Året 1999 såg datorerna som <Code>99</Code> och därför skulle klockorna stå <Code>00</Code> det vill säga 1900 när året egentligen var 2000. Det hade potential att ge katastrofala följder när allt från flygplan till elbolag skulle sluta fungera. Som tur var alla mycket förberedda just för att det var så mycket oro kring detta. Den hur buggen brukar kallas för y2k eller <Link href="https://en.wikipedia.org/wiki/Year_2000_problem">year 2000 problem</Link>.</p>
+            </div>
+        );
+    }
+}
+
+class ContentFramtiden extends Component<any, any> {
+    render() {
+        return (
+            <div>
+                <h2>Web 3.0</h2>
+                <p>Hur framtiden kommer se ut är ju svårt att säga förr än man är i framtiden.</p>
             </div>
         );
     }
@@ -313,4 +326,4 @@ ReactDOM.render(<EnKomponent/>, document.getElementById('root'));
 }
 
 // Export all the components
-export { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information, OmSidan }; 
+export { Content60, Content70, Content80, Content90, Content2000, ContentPlaceholder, Information, OmSidan, ContentFramtiden }; 

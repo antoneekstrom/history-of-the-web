@@ -27,6 +27,10 @@ body {
     max-width: 2000px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 main {
     display: flex;
     justify-content: start;
@@ -325,6 +329,10 @@ div.backtotop {
 
 div.backtotop.active {
     top: 1rem;
+}
+
+i.material-icons {
+    color: var(--font-dark);
 }
 
 @media screen and (max-width: 800px) {

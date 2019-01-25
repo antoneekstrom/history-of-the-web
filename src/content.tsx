@@ -84,7 +84,9 @@ class Content60 extends Component<any, any> {
         return (
             <div>
                 <h2>1960-talet</h2>
-                <p>Under 60-talet började det hända mycket inom nätverkstekniken. Det Amerikanska försvaret <Link href="https://www.darpa.mil/">DARPA</Link> utvecklade <Link href="https://sv.wikipedia.org/wiki/ARPANET">ARPANET</Link> som skulle vara ett decentraliserat nätverk som var säkert från att bli saboterat av Sovjetunionen.</p>
+                <p>Under 60-talet började det hända mycket inom nätverkstekniken. Det Amerikanska försvaret <Link href="https://www.darpa.mil/">DARPA</Link> utvecklade <Link href="https://sv.wikipedia.org/wiki/ARPANET">ARPANET</Link> som skulle vara ett <Code>decentraliserat</Code> nätverk som var säkert från att bli saboterat av Sovjetunionen. Det som inte var så bra med <Code>centraliserade</Code> var att de var svaga mot attacker eller fel. Om centret av nätverket slutar att fungera så kollapsar hela nätverket. Ett decentraliserat nätverk har inget center utan är utspritt över många olika geografiska platser vilket gör det mycket stabilare om något skulle gå fel.</p>
+
+                <p>Det första meddelande som skickades mellan två datorer skedde över ARPANET mellan <Link href="http://www.ucla.edu/">UCLA</Link> till <Link href="https://www.sri.com/">Stanford Research Institute</Link>. Meddelandet som de försökte att skicka var <Code>login</Code> men programmet kraschade så det blev bara <Code>lo</Code>.</p>
             </div>
         );
     }
@@ -95,7 +97,7 @@ class Content70 extends Component<any, any> {
         return (
             <div>
                 <h2>1970-talet</h2>
-                <p>På 70-talet började internet ta fart på riktigt. 1973 blir nätet internationellt och under året började datorer från flera platser i världen att kopplas upp till nätet.</p>
+                <p>På 70-talet började internet ta fart på riktigt. 1973 blir nätet internationellt och under året började datorer från flera platser i världen att kopplas upp till nätet. Innan Internet kom till Sverige helt så var det så kallade <Link href="https://sv.wikipedia.org/wiki/KOM-systemet">KOM-systemet</Link> mycket använt. Det var en elektronisk anslagstavla där individer kunde chatta och spela små spel på internet. Den här anslagstavlan var dock tydligen inte särskilt bra och ganska långsam.</p>
             </div>
         );
     }
@@ -160,7 +162,11 @@ class ContentFramtiden extends Component<any, any> {
         return (
             <div>
                 <h2>Web 3.0</h2>
-                <p>Hur framtiden kommer se ut är ju svårt att säga förr än man är i framtiden.</p>
+                <p>Hur framtiden kommer se ut är ju svårt att säga förrän man är i framtiden. Det går ju faktiskt inte riktigt att veta eftersom framtiden brukar vara ganska så oförutsägbar. Dock så innehavar jag en hög nivå av intelligens och framtidsseende så jag kan ändå berätta en del om hur det kommer att se ut.</p>
+
+                <p>I framtiden kommer folk inte längre orka göra riktiga program och allting kommer att vara webbapplikationer som aldrig fungerar som de ska. De få program som är kvar och inte har ersatts av <Italic>appar</Italic> som har mycket färre funktioner än vanliga program kommer att vara gjorda med Electron och inte vara mer än simplifierade chromium webbläsare. Privatpersoner kommer inte längre att ha diskar utan all information kommer att vara komprimerad till 5GB och lagrad i <Italic>molnet</Italic> på apples servrar för bara 2000kr i månaden. Jag kommer att för alltid vara fast med min 4 Mbit/s nedladdningshastighet och 2 meter wifi räckvidd medans youtube videor blir allt högre upplösning.</p>
+
+                <p>Knappar kommer att försvinna och ersättas med textfält som avläses av artificiella intelligenser som bestämmer vad dem tror att du vill göra. All digital media kommer att ersättas med twitch streams och late-night talk shows. De ända spelen som kommer att finnas kvar är League of Legends och battle royale spel. Musik kommer att sluta att tillverkas och det ända som folk lyssnar på är <Italic>poddar</Italic> som är producerade av före detta vine personligheter.</p>
             </div>
         );
     }
@@ -264,26 +270,26 @@ class TypeScriptInfo extends Component<any, any> {
                 <p>I Typescript kan man specifiera typen av variabel i koden.</p>
                 <CodeBlock lang="typescript">
                 {`
-    function cool(nice : number) : number {
+function cool(nice : number) : number {
     return nice * 3;
-    }
+}
                 `}
                 </CodeBlock>
                 <p>Det går att skapa interfaces för att göra mallar för object och klasser.</p>
                 <CodeBlock lang="typescript">
                 {`
-    interface Despacito {
+interface Despacito {
     heck : string;
     yeah : number;
     brother : boolean;
-    }
+}
                 `}
                 </CodeBlock>
                 <p>Det går till och med att specifiera typen av funktion eller object som skall finnas i en variabel eller tas in av en function.</p>
                 <CodeBlock lang="typescript">
                 {`
-    coolFunktion : (s : string) => void;
-    niceObjekt : {nice : boolean; epic : string};
+coolFunktion : (s : string) => void;
+niceObjekt : {nice : boolean; epic : string};
                 `}
                 </CodeBlock>
 

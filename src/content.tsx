@@ -167,6 +167,9 @@ class ContentFramtiden extends Component<any, any> {
                 <p>I framtiden kommer folk inte längre orka göra riktiga program och allting kommer att vara webbapplikationer som aldrig fungerar som de ska. De få program som är kvar och inte har ersatts av <Italic>appar</Italic> som har mycket färre funktioner än vanliga program kommer att vara gjorda med Electron och inte vara mer än simplifierade chromium webbläsare. Privatpersoner kommer inte längre att ha diskar utan all information kommer att vara komprimerad till 5GB och lagrad i <Italic>molnet</Italic> på apples servrar för bara 2000kr i månaden. Jag kommer att för alltid vara fast med min 4 Mbit/s nedladdningshastighet och 2 meter wifi räckvidd medans youtube videor blir allt högre upplösning.</p>
 
                 <p>Knappar kommer att försvinna och ersättas med textfält som avläses av artificiella intelligenser som bestämmer vad dem tror att du vill göra. All digital media kommer att ersättas med twitch streams och late-night talk shows. De ända spelen som kommer att finnas kvar är League of Legends och battle royale spel. Musik kommer att sluta att tillverkas och det ända som folk lyssnar på är <Italic>poddar</Italic> som är producerade av före detta vine personligheter.</p>
+
+                <p>Oj där lät jag väldigt cynisk. Det var synd. Det kanske inte blir så farligt ändå. Eller så blir det. Vi får se helt enkelt.</p>
+                <p>P.S. Texten ovanför kan innehålla spår av sarkasm.</p>
             </div>
         );
     }
@@ -318,7 +321,7 @@ class EnKomponent extends Component<Props, State> {
 }
                 `}
                 </CodeBlock>
-                <p>En komponent använder sig av <Code>props</Code> och <Code>state</Code>. Props är bl.a. de attributer som anger och state är variabler som kan använda i sin komponent. State ändrar man med <Code>this.setState(state : Object)</Code>, när man använder den metoden uppdateras komponenten automatiskt med den nya datan.</p>
+                <p>En komponent använder sig av <Code>props</Code> och <Code>state</Code>. Props är bl.a. de attributer som anges i JSX och state är variabler som kan användas i komponenten. State ändrar man med <Code>this.setState(state : Object)</Code>, när man använder den metoden uppdateras komponenten automatiskt med den nya datan.</p>
                 <h3>JSX</h3>
                 <p>React använder något som de kallar för <Code>JSX</Code> vilket introducerar XML liknande syntax till React. Det gillar jag mycket eftersom det gör det intuitivt att arbeta med komponenter. När man använder JSX är det nästan som att använda <Code>HTML</Code> fast med sina egna taggar. När man renderar en komponent ser ut på detta viset:</p>
                 <CodeBlock lang="typescript">

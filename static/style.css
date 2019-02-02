@@ -60,7 +60,7 @@ div.text-content, article.text-content {
 }
 
 .top-container {
-    max-height: 21rem;
+    height: 28rem;
 
     display: flex;
     justify-content: space-between;

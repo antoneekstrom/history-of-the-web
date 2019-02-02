@@ -49,8 +49,8 @@ class Information extends Component<any, any> {
                         <h2>Källor</h2>
                         <ul>
                             <Link href="https://www.internetmuseum.se/berattelsen-om-internets-historia/">Internet Museum - Berättelsen om internets historia</Link>
-                            <Link href="https://sv.wikipedia.org/wiki/ARPANET">Wikipedia - ARPANET</Link>
                         </ul>
+                        <p>Andra källor är länkade direkt i texten. Fast egentligen läste jag inte riktigt dem utan jag bara länkade till wikipedia sidan utan att kolla på den. Internet museet är bra dock. Jag kan ha kollat någon annanstans men jag minns inte.</p>
                     </section>
                 </div>
 

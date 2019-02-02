@@ -336,21 +336,48 @@ i.material-icons {
 }
 
 @media screen and (max-width: 800px) {
+    .top-container {
+        max-height: 100%;
+    }
+    .timeline {
+        flex-direction: column;
+        height: auto;
+        width: 60%;
+    }
+    .timeline-period {
+        width: 100%;
+        padding: 0rem;
+        flex-basis: 3rem;
+    }
+    .timeline-period:hover {
+        height: auto;
+        flex-basis: 3rem;
+
+    }
+    .tooltip {
+        height: auto;
+    }
+    .tooltip-text {
+        display: none;
+    }
     .main-inner-container {
         width: 100%;
     }
     .header-inner-container {
         margin: 0;
     }
-    .top-container > article, .top-container > header {
+    .top-container > header {
         flex-basis: 0;
         flex-grow: 0;
+    }
+    .top-container > article {
+        flex-basis: auto;
     }
     .top-container {
         flex-direction: column;
     }
     .timeline-container {
-        margin-top: 5rem;
+        margin-top: 2rem;
     }
     div.page {
         width: var(--content-width);
